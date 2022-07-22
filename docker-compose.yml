@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  db:
+    container_name: postgres_links
+    image: postgres
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: links_db
+    ports:
+      - "5425:5432"
+  pgadmin:
+    container_name: pgadmin_links
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 1@1.com
+      PGADMIN_DEFAULT_PASSWORD: 123
+    ports:
+      - "5050:80"
+
+# to connect, in pgadmin the ip is host.docker.internal instead of localhost, and the port is 5425
+
+#at ubuntu vps you can connect using the docker ip instead of local host
+#to get it docker inspect CONTAINER_ID  | grep IPAddress.
+
+# then for the port is 5432
